@@ -57,6 +57,9 @@ flag dev
 
 library
   build-depends:      base             >= 4.8 && < 5.0
+                    , containers       >= 0.5 && < 0.6
+  if !impl(ghc >= 8.0)
+    build-depends:    semigroups   == 0.18.*
   exposed-modules:    Data.Check
   if flag(dev)
     ghc-options:      -Wall -Werror
