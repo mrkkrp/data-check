@@ -32,5 +32,42 @@
 
 module Main (main) where
 
+import Data.Check
+import Test.Hspec
+import Test.QuickCheck
+import Data.Monoid
+
 main :: IO ()
-main = return ()
+main = hspec spec
+
+spec :: Spec
+spec = do
+  context "when two normalizers have the same priority" $
+    it "the left one overrides the right one" $
+      property $ \x -> do
+        runChecker (addOneNorm <> addTwoNorm) x `shouldBe` Right (x + 1)
+        runChecker (addTwoNorm <> addOneNorm) x `shouldBe` Right (x + 2)
+  context "when two validators have the same priority" $
+    it "the left one overrides the right one" $
+      property $ \x -> do
+        runChecker (validatorTrue <> validatorFalse) x `shouldBe` Left True
+        runChecker (validatorFalse <> validatorTrue) x `shouldBe` Left False
+  -- TODO every normalizer should be applied, and applied in order
+  -- TODO every validators should be run, and run in order
+  -- TODO normalizers are run before validators
+  -- TODO normalizers and validators can run inside a monad
+
+----------------------------------------------------------------------------
+-- Collection of test normazilers and validators
+
+addOneNorm :: Monad m => Checker m () Int
+addOneNorm = normalizer 3 (+ 1)
+
+addTwoNorm :: Monad m => Checker m () Int
+addTwoNorm = normalizer 3 (+ 2)
+
+validatorTrue :: Monad m => Checker m Bool Int
+validatorTrue = validator 3 (const $ return True)
+
+validatorFalse :: Monad m => Checker m Bool Int
+validatorFalse = validator 3 (const $ return False)
