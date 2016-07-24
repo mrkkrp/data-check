@@ -43,7 +43,7 @@ category:             Data, Web
 synopsis:             Library for checking and normalization of data (e.g. from web forms)
 build-type:           Simple
 description:          Library for checking and normalization of data (e.g. from web forms).
-extra-source-files:   CHANGELOG.md
+extra-doc-files:      CHANGELOG.md
                     , README.md
 
 source-repository head
