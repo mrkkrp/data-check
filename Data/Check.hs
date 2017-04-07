@@ -7,8 +7,8 @@
 -- Stability   :  experimental
 -- Portability :  portable
 --
--- This module provides generalized approach to checking and verification of
--- data, it's useful, for example, for validation of fields on web forms.
+-- This module provides a generalized approach to checking and verification
+-- of data. It's useful, for example, for validation of fields on web forms.
 --
 -- Typically, there are a number of transformations and checks you may want
 -- to perform on a particular type of data, such as text. Thus, it makes
@@ -20,8 +20,8 @@
 -- However, if we have many normalizing operations, we need a way to specify
 -- in which order they should be performed, or result can be unpredictable.
 --
--- To specify order in which transformations are performed, 'normalizer' and
--- 'normalizerM' functions take a “priority” argument, which is just a
+-- To specify the order in which transformations are performed, 'normalizer'
+-- and 'normalizerM' functions take a “priority” argument, which is just a
 -- 'Natural' number. The bigger the number, the later the function will be
 -- applied, so the transformation with priority 0 will always run first.
 --
