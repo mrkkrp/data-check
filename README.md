@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/mrkkrp/data-check/badge.svg?branch=master&service=github)](https://coveralls.io/github/mrkkrp/data-check?branch=master)
 
 This is a library that implements generalized approach to checking and
-verification of data, it's useful, for example, for validation of fields on
+verification of data. It's useful, for example, for validation of fields on
 web forms.
 
 Typically, there are a number of transformations and checks you may want to

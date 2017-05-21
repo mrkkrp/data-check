@@ -75,7 +75,7 @@ instance Eq (Normalizer m a) where
 instance Ord (Normalizer m a) where
   (Normalizer x _) `compare` (Normalizer y _) = x `compare` y
 
--- | Create a normalizing 'Checker'. Every normalizer has a priority — the
+-- | Create a normalizing 'Checker'. Every normalizer has a priority—the
 -- bigger the number, the later the normalizer runs. Every normalizer you
 -- use should have a unique priority number.
 
@@ -109,7 +109,7 @@ instance Eq (Validator m e a) where
 instance Ord (Validator m e a) where
   (Validator x _) `compare` (Validator y _) = x `compare` y
 
--- | Create a validating 'Checker'. Every validator has a priority — the
+-- | Create a validating 'Checker'. Every validator has a priority—the
 -- bigger the number, the later the validation step runs. Every validator
 -- you use should have a unique priority number.
 
@@ -134,8 +134,8 @@ validatorM n f = Checker S.empty (S.singleton $ Validator n f)
 -- | @'Checker' m e a@ is a checker that checks value of type @a@, can
 -- perform the check in @m@ monad, returning @e@ message when check fails.
 --
--- 'Checker' is a 'Semigroup' and 'Monoid' — this is how you combine
--- different checkers and build more complex ones.
+-- 'Checker' is a 'Semigroup' and 'Monoid'—this is how you combine different
+-- checkers and build more complex ones.
 
 data Checker m e a where
   Checker :: Monad m
